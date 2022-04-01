@@ -14,11 +14,12 @@ public class PasswordLogin implements LoginMethod {
     }
 
     @Override
-    public void getUsername() {
+    public double getUsername() {
         System.out.println("Username:");
         Scanner sc = new Scanner(System.in);
         username = sc.nextLine();
         System.out.println(username);
+        return 0;
     }
 
     @Override
