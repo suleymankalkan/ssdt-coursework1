@@ -4,8 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ssdt.cw1.Authentication.Authenticate;
-import ssdt.cw1.Authentication.createAuth;
+import ssdt.cw1.Authentication.CreateAuth;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -37,7 +36,7 @@ class SmsLoginTest {
 
     @BeforeAll
     static void setData(){
-        tester = new createAuth();
+        tester = new CreateAuth();
         login = tester.create(3);
     }
 
@@ -51,14 +50,14 @@ class SmsLoginTest {
     void getUsername() {
         ByteArrayInputStream argumentsIn = new ByteArrayInputStream("suleyman".getBytes());
         System.setIn(argumentsIn);
-        login.getUsername();
+        login.setUsername();
     }
 
     @Test
     void getSecret() {
         ByteArrayInputStream argumentsIn = new ByteArrayInputStream("dummypassword".getBytes());
         System.setIn(argumentsIn);
-        login.getSecret();
+        login.setSecret();
     }
 
     @Test
@@ -68,7 +67,7 @@ class SmsLoginTest {
 
     @Test
     void printMethodName() {
-        login.printMethodName();
+        login.getMethodName();
         assertEquals("--Choosen Method: Sms login\n\n", outContent.toString());
     }
 

@@ -1,13 +1,14 @@
 package ssdt.cw1.LoginMethods;
 
 public interface LoginMethod {
-    void printMethodName();
+    String getMethodName();
     boolean isValidated();
-    double getUsername();
-    void getSecret();
+    void setUsername(String username);
+
+    String getUsername();
+    void setSecret(String secret);
+
+    String getSecret();
     void checkAuth();
-    // variable: static methodName
-    // printAuthPrompt
-    // getSecret
-    // checkAuth
 }
+// set methods

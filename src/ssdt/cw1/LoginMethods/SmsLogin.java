@@ -3,7 +3,6 @@ package ssdt.cw1.LoginMethods;
 import ssdt.cw1.WriteToFile;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 public class SmsLogin implements LoginMethod {
     private boolean validated = false;
@@ -18,24 +17,26 @@ public class SmsLogin implements LoginMethod {
     }
 
     @Override
-    public double getUsername() {
-        System.out.println("Username:");
-        Scanner sc = new Scanner(System.in);
-        username = sc.nextLine();
-        System.out.println(username);
-        return 0;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
-    public void getSecret() {
+    public String getUsername() {
+        return this.username;
+    }
+
+    @Override
+    public void setSecret(String secret) {
         // Set a dummy sms code for demo
         smsCode = "dummysms";
         WriteToFile.WriteOnTxtFile("sms", smsCode);
 
-        System.out.println("Sms Code:");
-        Scanner sc = new Scanner(System.in);
-        smsCodeInput = sc.nextLine();
-        System.out.println(smsCodeInput);
+        smsCodeInput = secret;
+    }
+    @Override
+    public String getSecret() {
+        return this.smsCodeInput;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class SmsLogin implements LoginMethod {
     }
 
     @Override
-    public void printMethodName() {
-        System.out.println("--Choosen Method: Sms login\n");
+    public String getMethodName() {
+        return "SMS Login";
     }
 }

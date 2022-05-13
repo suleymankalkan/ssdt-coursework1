@@ -9,7 +9,7 @@ class createAuthTest {
 
     @Test
     void create() {
-        Authenticate tester = new createAuth();
+        Authenticate tester = new CreateAuth();
         assertTrue(tester.create(1) instanceof LoginMethod);
         assertTrue(tester.create(2) instanceof LoginMethod);
         assertTrue(tester.create(3) instanceof LoginMethod);

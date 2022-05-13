@@ -1,7 +1,6 @@
 package ssdt.cw1.LoginMethods;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 public class PasswordLogin implements LoginMethod {
     private boolean validated = false;
@@ -14,31 +13,33 @@ public class PasswordLogin implements LoginMethod {
     }
 
     @Override
-    public double getUsername() {
-        System.out.println("Username:");
-        Scanner sc = new Scanner(System.in);
-        username = sc.nextLine();
-        System.out.println(username);
-        return 0;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getUsername(){
+        return  this.username;
     }
 
     @Override
-    public void getSecret() {
-        System.out.println("Password:");
-        Scanner sc = new Scanner(System.in);
-        password = sc.nextLine();
-        System.out.println(password);
+    public void setSecret(String secret) {
+        this.password = secret;
+    }
+
+    public String getSecret(){
+        return  this.password;
     }
 
     @Override
     public void checkAuth() {
         if(Objects.equals(username, "suleyman") && Objects.equals(password, "dummypassword")){
             validated = true;
+        } else {
+            validated = false;
         }
     }
 
     @Override
-    public void printMethodName() {
-        System.out.println("--Choosen Method: Password Login \n");
+    public String getMethodName() {
+        return "Password Login";
     }
 }

@@ -3,7 +3,6 @@ package ssdt.cw1.LoginMethods;
 import ssdt.cw1.WriteToFile;
 
 import java.util.Objects;
-import java.util.Scanner;
 
 public class EmailLogin implements LoginMethod {
     private boolean validated = false;
@@ -18,24 +17,27 @@ public class EmailLogin implements LoginMethod {
     }
 
     @Override
-    public double getUsername() {
-        System.out.println("Username:");
-        Scanner sc = new Scanner(System.in);
-        username = sc.nextLine();
-        System.out.println(username);
-        return 0;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername(){
+        return  this.username;
     }
 
     @Override
-    public void getSecret() {
+    public void setSecret(String secret) {
         // Set a dummy email code for demo
         emailCode = "dummyemail";
         WriteToFile.WriteOnTxtFile("email", emailCode);
 
-        System.out.println("Email Code:");
-        Scanner sc = new Scanner(System.in);
-        emailCodeInput = sc.nextLine();
-        System.out.println(emailCodeInput);
+        // Set the input
+        emailCodeInput = secret;
+    }
+
+    @Override
+    public String getSecret() {
+        return this.emailCodeInput;
     }
 
     @Override
@@ -46,7 +48,7 @@ public class EmailLogin implements LoginMethod {
     }
 
     @Override
-    public void printMethodName() {
-        System.out.println("--Choosen Method: Email Login\n");
+    public String getMethodName() {
+        return "Email Login";
     }
 }
